@@ -1,13 +1,12 @@
 def countEmail():
     # This first line is provided for you
-    file_name = input("Enter file:")
+    name = input("Enter file:")
+    if len(name) < 1 : name = "mbox-short.txt"
+    handle = open(name)
     sender_day = []
     sender_dict= dict()
 
-    with open(file_name, 'r') as user_file:
-        local_file = user_file.readlines()
-
-    for line in local_file:
+    for line in handle:
         if line.startswith('From '):
             sender_day.append(line.split(' ')[1])
     for key in sender_day:
